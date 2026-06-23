@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Requisição Ajax</title>
+</head>
+<body>
+
+    <form>
+        <label for="idade">Digite sua idade:</label>
+        <input type="number" id="idade" name="idade">
+        <button type="button" onclick="enviarRequisicao()">Enviar</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        function enviarRequisicao() {
+            // B: Objeto XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+            const idadeValue = document.getElementById('idade').value;
+
+            // C: Configurando o método POST e o cabeçalho
+            xhr.open("POST", "valida_idade.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            // D: Recebendo a resposta com .onload
+            xhr.onload = function() {
+                document.getElementById('resultado').textContent = this.responseText;
+            };
+
+            // Envia os dados da idade
+            xhr.send("idade=" + encodeURIComponent(idadeValue));
+        }
+    </script>
+</body>
+</html>

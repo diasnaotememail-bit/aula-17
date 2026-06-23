@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1 - Galeria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        /* A e B: Container galeria ocupando toda a largura, 3 colunas específicas e gap */
+        .galeria {
+            display: grid;
+            width: 100%;
+            grid-template-columns: auto 200px 100px;
+            gap: 20px;
+        }
+        /* Estilo básico para os itens ficarem visíveis */
+        .item {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="galeria" id="galeria"></div>
+
+    <script>
+        // C: Array de produtos
+        const produtos = ['Teclado', 'Mouse', 'Monitor', 'Fone', 'Gabinete'];
+        const containerGaleria = document.getElementById('galeria');
+
+        // C e D: Loop for com verificação (if/continue)
+        for (let i = 0; i < produtos.length; i++) {
+            if (produtos[i] === 'Fone') {
+                continue; // Pula o 'Fone'
+            }
+            
+            // Criando e adicionando o elemento filho
+            const divItem = document.createElement('div');
+            divItem.className = 'item';
+            divItem.textContent = produtos[i];
+            containerGaleria.appendChild(divItem);
+        }
+    </script>
+</body>
+</html>

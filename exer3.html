@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 - API Local com JSON e Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            max-width: 300px;
+        }
+        .card {
+            background-color: #f4f4f9;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        /* C: Posicionando o card de destaque */
+        .destaque {
+            grid-row-start: 2;
+            grid-row-end: 4;
+            background-color: #ffd700; /* Cor diferente para destacar visualmente */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-container" id="grid-container"></div>
+
+    <script>
+        // A: Objeto JSON
+        const dadosFuncionario = {"nome": "Maria", "cargo": "Desenvolvedora", "nivel": "Pleno"};
+        const container = document.getElementById('grid-container');
+
+        // A e B: Loop for-in
+        for (let chave in dadosFuncionario) {
+            const cardItem = document.createElement('div');
+            cardItem.className = 'card';
+            
+            // Formatando o texto com chave e valor
+            cardItem.innerHTML = `<span>${chave.toUpperCase()}: ${dadosFuncionario[chave]}</span>`;
+
+            // Verificando se é o card de 'cargo' para adicionar a classe de destaque
+            if (chave === 'cargo') {
+                cardItem.classList.add('destaque');
+            }
+
+            container.appendChild(cardItem);
+        }
+    </script>
+</body>
+</html>
